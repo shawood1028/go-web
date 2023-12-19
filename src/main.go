@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-superset/routes"
+	"go-web/routes"
 )
 
 func main() {
