@@ -1,6 +1,6 @@
-app_name = "gin_web"
 
-log_level = "debug"
+[app]
+HttpPort = 8080
 
 [mysql]
 DbHost = "127.0.0.1"
