@@ -1,4 +1,4 @@
-module go-superset
+module go-web
 
 go 1.20
 
