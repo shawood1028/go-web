@@ -13,6 +13,7 @@ func main() {
 		fmt.Printf("startup service failed, err:%v\n", err)
 		fmt.Printf("3333")
 		fmt.Printf("44444")
+		fmt.Printf("55555")
 	}
 
 }
