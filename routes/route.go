@@ -8,8 +8,8 @@ import (
 // RegisterRoute 配置路由信息，注册单个路由
 func RegisterRoute() *gin.Engine {
 	r := gin.Default()
-	r.GET("/article", articleHandler)
 	r.GET("/", indexHandler)
+	r.GET("/article", articleHandler)
 	return r
 }
 
