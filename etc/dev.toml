@@ -1,0 +1,10 @@
+
+[app]
+HttpPort = 8080
+
+[mysql]
+DbHost = "127.0.0.1"
+DbPort = "3306"
+DbUser = "root"
+DbPassWord = "abcd1234!"
+DbName = "ginblog"
