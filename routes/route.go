@@ -9,7 +9,6 @@ import (
 func RegisterRoute() *gin.Engine {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/*")
-	r.GET("/article", articleHandler)
 	r.GET("/", indexHandler)
 	return r
 }
@@ -17,11 +16,5 @@ func RegisterRoute() *gin.Engine {
 func indexHandler(ctx *gin.Context) {
 	ctx.HTML(http.StatusOK, "index.html", gin.H{
 		"msg": "this is index",
-	})
-}
-
-func articleHandler(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "article.html", gin.H{
-		"msg": "this is article",
 	})
 }
