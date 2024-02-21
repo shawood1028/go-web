@@ -26,12 +26,20 @@
             <a class="nav-link" href="javascript:void(0)">Data</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="text" placeholder="Search">
-          <button class="btn btn-primary" type="button">Search</button>
-        </form>
       </div>
     </div>
   </nav>
+  <h1>article list</h1>
+  <p>
+    {{range .articles}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ .Title }}</h5>
+        <p class="card-text"> {{ .Content }}</p>
+        <a href="#" class="card-link">More</a>
+      </div>
+    </div>
+    {{ end }}
+  </p>
 </body>
 </html>

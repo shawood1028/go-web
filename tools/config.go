@@ -26,7 +26,6 @@ func init() {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("配置文件初始化")
 	return
 }
 
@@ -51,7 +50,6 @@ func GetMysqlDB() *gorm.DB {
 		sqlDB, _ := _db.DB()
 		// TODO 设置数据库连接池参数
 		sqlDB.SetMaxOpenConns(100) // 设置数据库连接池最大连接数
-		fmt.Println("MySQL初始化成功")
 	}
 	return _db
 }

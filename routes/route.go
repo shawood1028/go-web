@@ -2,6 +2,7 @@ package routes
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-web/model"
 	"net/http"
 )
 
@@ -14,7 +15,10 @@ func RegisterRoute() *gin.Engine {
 }
 
 func indexHandler(ctx *gin.Context) {
-	ctx.HTML(http.StatusOK, "index.html", gin.H{
-		"msg": "this is index",
-	})
+	articles := model.GetLastFiveArticles()
+	data := gin.H{
+		"msg":      "this is index",
+		"articles": articles,
+	}
+	ctx.HTML(http.StatusOK, "index.html", data)
 }
