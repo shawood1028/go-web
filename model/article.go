@@ -18,16 +18,20 @@ type Article struct {
 
 func AddArticle(article Article) *gorm.DB {
 	db := tools.GetMysqlDB()
-	result := db.Create(article)
+	result := db.Create(&article)
 	return result
 }
 
-func GetOneArticle() *gorm.DB {
+// GetOneArticle 获取指定id的文章
+func GetOneArticle(aid int) Article {
 	db := tools.GetMysqlDB()
-	var art Article
-	res := db.First(&art)
-	fmt.Println(res)
-	return nil
+	var article Article
+	res := db.Find(&article, "id = ?", aid)
+	if res.Error != nil {
+		fmt.Println(res.Error)
+	}
+	fmt.Println(article)
+	return article
 }
 
 // GetLastFiveArticles 获取五篇最近文章
@@ -39,5 +43,16 @@ func GetLastFiveArticles() []Article {
 		fmt.Println(res.Error)
 	}
 	fmt.Println(articles)
+	return articles
+}
+
+// GetAllArticles 获取所有文章（暂时没有分页）
+func GetAllArticles() []Article {
+	db := tools.GetMysqlDB()
+	var articles []Article
+	res := db.Order("created_at desc").Find(&articles).Scan(&articles)
+	if res.Error != nil {
+		fmt.Println(res.Error)
+	}
 	return articles
 }

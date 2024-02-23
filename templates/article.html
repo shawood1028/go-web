@@ -17,32 +17,27 @@
       <div class="collapse navbar-collapse" id="mynavbar">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/articles">Articles</a>
+            <a class="nav-link" href="/articles">Article</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/datas">Datas</a>
+            <a class="nav-link" href="/datas">Data</a>
+          </li>
+          <li>
+            <a class="nav-link" href="javascript:history.go(-1);">返回上一页</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="搜索暂不可用" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>
-  <h1>Index Page</h1>
   <h2>article list</h2>
   <p>
-    {{range .articles}}
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{{ .Title }}</h5>
-        <p class="card-text"> {{ .Content }}</p>
-        <p class="card-text"> {{ .ID }}</p>
-        <a href="http://localhost:8080/article/{{ .ID }}" class="card-link">More</a>
+        <h5 class="card-title">{{ .article.Title }}</h5>
+        <p class="card-text"> {{ .article.Content }}</p>
+        <a href="http://localhost:8080/article/{{ .aid }}" class="card-link">More</a>
       </div>
     </div>
-    {{ end }}
   </p>
 </body>
 </html>
