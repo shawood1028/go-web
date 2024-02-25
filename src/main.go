@@ -19,7 +19,8 @@ func main() {
 		return
 	}
 
-	if err := r.Run(); err != nil {
+	port := viper.GetString("server.HttpPort")
+	if err := r.Run(":" + port); err != nil {
 		fmt.Printf("startup service failed, err:%v\n", err)
 	}
 	fmt.Println(viper.Get("mysql.DbHost"))
