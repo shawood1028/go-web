@@ -4,12 +4,11 @@ import (
 	"fmt"
 	"github.com/spf13/viper"
 	"go-web/model"
-	"go-web/routes"
 	"go-web/tools"
 )
 
 func main() {
-	r := routes.RegisterRoute()
+	r := RegisterRoute()
 	db := tools.GetMysqlDB()
 	// 创建article表
 	err := db.AutoMigrate(&model.Article{})

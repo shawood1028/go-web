@@ -1,16 +1,23 @@
-package routes
+package main
 
 import (
+	"embed"
 	"github.com/gin-gonic/gin"
 	"go-web/model"
+	"html/template"
 	"net/http"
 	"strconv"
 )
 
+//go:embed assets/* templates/*
+var f embed.FS
+
 // RegisterRoute 配置路由信息，注册单个路由
 func RegisterRoute() *gin.Engine {
 	r := gin.Default()
-	r.LoadHTMLGlob("templates/*")
+	templ := template.Must(template.New("").ParseFS(f, "templates/*.html"))
+	r.StaticFS("/public", http.FS(f))
+	r.SetHTMLTemplate(templ)
 	r.GET("/", indexHandler)
 	r.GET("/articles", articlesHandler)
 	r.GET("/article/:id", articleHandler)
@@ -53,5 +60,5 @@ func articleHandler(ctx *gin.Context) {
 // 数据中心
 func datasHandler(ctx *gin.Context) {
 	data := "datas"
-	ctx.HTML(http.StatusOK, "datas.html", data)
+	ctx.HTML(http.StatusOK, "data/*", data)
 }
