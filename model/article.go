@@ -42,7 +42,6 @@ func GetLastFiveArticles() []Article {
 	if res.Error != nil {
 		fmt.Println(res.Error)
 	}
-	fmt.Println(articles)
 	return articles
 }
 

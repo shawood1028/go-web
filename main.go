@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"go-web/model"
 	"go-web/tools"
 )
 
 func main() {
+	// 设置环境
+	gin.SetMode(viper.GetString("server.Mode"))
 	r := RegisterRoute()
 	db := tools.GetMysqlDB()
 	// 创建article表
