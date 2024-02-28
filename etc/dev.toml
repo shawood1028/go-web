@@ -3,7 +3,7 @@ Mode = "release"
 HttpPort = 8080
 
 [mysql]
-DbHost = "127.0.0.1"
+DbHost = "47.243.133.65"
 DbPort = "3306"
 DbUser = "root"
 DbPassWord = "abcd1234!"

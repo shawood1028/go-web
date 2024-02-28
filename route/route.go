@@ -1,4 +1,4 @@
-package main
+package route
 
 import (
 	"embed"
@@ -12,7 +12,7 @@ import (
 	"html/template"
 )
 
-//go:embed templates/*
+//go:embed templates/* templates/*/*
 var f embed.FS
 
 // RegisterRoute 配置路由信息，注册单个路由
