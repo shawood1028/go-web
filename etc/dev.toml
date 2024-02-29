@@ -1,5 +1,5 @@
 [server]
-Mode = "release"
+Mode = "debug"
 HttpPort = 8080
 
 [mysql]
