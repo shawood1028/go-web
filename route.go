@@ -4,24 +4,28 @@ import (
 	"embed"
 	"github.com/gin-gonic/gin"
 	"go-web/model"
+	"html/template"
 	"net/http"
 	"strconv"
 )
 
-import (
-	"html/template"
-)
+//go:embed static/*
+var staticfiles embed.FS
 
-//go:embed templates/* templates/*/*
-var f embed.FS
+//go:embed templates/*
+var templatefiles embed.FS
 
 // RegisterRoute 配置路由信息，注册单个路由
 func RegisterRoute() *gin.Engine {
 	r := gin.Default()
-	templ := template.Must(template.New("").ParseFS(f, "templates/*.html"))
-	r.StaticFS("/public", http.FS(f))
-	r.SetHTMLTemplate(templ)
+	// 初始化默认静态资源
+	r.StaticFS("/static", http.FS(staticfiles))
+	// 加载模板
+	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(templatefiles, "templates/*.html")))
 	r.GET("/", indexHandler)
+	r.GET("/about", aboutHandler)
+	r.GET("/contact", contactHandler)
+	r.GET("/post", postHandler)
 	r.GET("/articles", articlesHandler)
 	r.GET("/article/:id", articleHandler)
 	return r
@@ -33,6 +37,27 @@ func indexHandler(ctx *gin.Context) {
 		"msg": "this is index",
 	}
 	ctx.HTML(http.StatusOK, "index.html", data)
+}
+
+func contactHandler(ctx *gin.Context) {
+	data := gin.H{
+		"msg": "this is index",
+	}
+	ctx.HTML(http.StatusOK, "contact.html", data)
+}
+
+func aboutHandler(ctx *gin.Context) {
+	data := gin.H{
+		"msg": "this is index",
+	}
+	ctx.HTML(http.StatusOK, "about.html", data)
+}
+
+func postHandler(ctx *gin.Context) {
+	data := gin.H{
+		"msg": "this is index",
+	}
+	ctx.HTML(http.StatusOK, "post.html", data)
 }
 
 // 获取所有文章
