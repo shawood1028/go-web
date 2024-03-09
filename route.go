@@ -5,23 +5,22 @@ import (
 	"github.com/gin-gonic/gin"
 	"go-web/model"
 	"html/template"
+	"io/fs"
 	"net/http"
 	"strconv"
 )
 
-//go:embed static
-var staticFiles embed.FS
-
-//go:embed templates/*
-var templateFiles embed.FS
+//go:embed templates/* static/*
+var f embed.FS
 
 // RegisterRoute 配置路由信息，注册单个路由
 func RegisterRoute() *gin.Engine {
 	r := gin.Default()
 	// 初始化默认静态资源
-	r.StaticFS("/123", http.FS(staticFiles))
+	fe, _ := fs.Sub(f, "static")
+	r.StaticFS("/static", http.FS(fe))
 	// 加载模板
-	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(templateFiles, "templates/*.html")))
+	r.SetHTMLTemplate(template.Must(template.New("").ParseFS(f, "templates/*.html")))
 	r.GET("/", indexHandler)
 	r.GET("/about", aboutHandler)
 	r.GET("/contact", contactHandler)
