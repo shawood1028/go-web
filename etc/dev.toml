@@ -1,9 +1,9 @@
 [server]
-Mode = "debug"
+Mode = "release"
 HttpPort = 8080
 
 [mysql]
-DbHost = "47.243.133.65"
+DbHost = "localhost"
 DbPort = "3306"
 DbUser = "root"
 DbPassWord = "abcd1234!"
