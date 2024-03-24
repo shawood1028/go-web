@@ -46,8 +46,9 @@ func contactHandler(ctx *gin.Context) {
 }
 
 func aboutHandler(ctx *gin.Context) {
+	aboutInfo := "Shawood \n一个喜欢胡思乱想的理想主义者。\n兼职程序员。"
 	data := gin.H{
-		"msg": "this is index",
+		"msg": aboutInfo,
 	}
 	ctx.HTML(http.StatusOK, "about.html", data)
 }
